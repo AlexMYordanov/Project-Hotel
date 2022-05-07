@@ -1,0 +1,7 @@
+Room: 101 - 1 bed. Guest:  mite
+
+Room: 123 - 4 beds
+Room: 205 - 3 beds. Guest:  gogo
+
+Room: 210 - 3 beds
+
