@@ -1,6 +1,5 @@
 #ifndef STRING_HPP_INCLUDED
 #define STRING_HPP_INCLUDED
-
 #include <iostream>
 
 const size_t default_cap = 16;
@@ -22,7 +21,7 @@ public:
     String& append(const String&);
     String& operator=(const String& other);
     String& operator+=(const String&);
-    bool operator==(const char) const;
+    bool operator==(const char*) const;
     ~String();
 
     friend std::ostream& operator<<(std::ostream&, const String&);
@@ -31,6 +30,7 @@ public:
     void Erase();
     void PushBack(char );
     void get_line();
+
 
 };
 
