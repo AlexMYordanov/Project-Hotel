@@ -101,9 +101,9 @@ void String::Resize(size_t capacity)
     delete[] temp;
 }
 
-bool String::operator==(const char other) const
+bool String::operator==(const char* other) const
 {
-    return  (strcmp(str, &other)== 0) && (capacity == 1) ;
+    return  strcmp(str, other)== 0 ;
 }
 
 
@@ -135,14 +135,18 @@ void String::PushBack(char c)
 
 void String::get_line()
 {
-    char buff=' ';
-    while(buff!='\n')
-    {
-        std::cin>>buff;
-        PushBack(buff);
-    }
-}
 
+    char c;
+    for(;;)
+    {
+        std::cin.get(c);
+        if(c=='\n')
+            break;
+        else
+           PushBack(c);
+    }
+
+}
 
 
 
