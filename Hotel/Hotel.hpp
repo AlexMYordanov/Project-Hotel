@@ -1,4 +1,3 @@
-#ifndef HOTEL_HPP_INCLUDED
 #define HOTEL_HPP_INCLUDED
 
 #include "Room.hpp"
@@ -23,12 +22,12 @@ class Hotel
 
 
     friend std::ostream& operator<<(std::ostream&, const Hotel&);
-    void reserve(int);
-    int* AvailableRooms();
+    void reserve(const int);
+    int* AvailableRooms(int&);
     void FreeRoom(const unsigned short);
     void CloseRoom(const unsigned short, Date&, Date&);
     const bool isAvailable(const unsigned short) const;
-    int SuitableRoom(const unsigned short);
+    int SuitableRoom(const unsigned short, Date& , Date& );
 
 
     ~Hotel();
