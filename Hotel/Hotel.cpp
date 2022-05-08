@@ -20,14 +20,14 @@ void Hotel::reserve(int size)
         return ;
     if(capacity!=0)
     {
-       // rooms* buff=new Room[size];
+        Room* buff=new Room[size];
         for(int i=0;i<capacity;++i)
         {
-          //  buff[i]=rooms[i];
+           buff[i]=rooms[i];
         }
     delete[] rooms;
     rooms=buff;
-   // buff=nullptr;
+    buff=nullptr;
     capacity=size;
     }
     else
@@ -85,25 +85,27 @@ Room& Hotel::operator[](int i)
     else
        std::cerr<<"Room does not exist!";
 }
-/*
-int* Hotel::AvailableRooms()
+
+int* Hotel::AvailableRooms(int& cnt)
 {
-    int cnt=0;
+
     for(int i=0; i<capacity; ++i)
         {
-            if(rooms[i].get_name()=="None." && rooms[i].get_note()=="None.")
-                cnt++;
+            if(rooms[i].get_name()=="None" && rooms[i].get_note()=="None")
+
+                    cnt++;
         }
+
     int* res= new int[cnt];
     int index=0;
     for(int i=0; i<capacity; ++i)
         {
-            if(rooms[i].get_name()=="None." && rooms[i].get_note()=="None.")
+            if(rooms[i].get_name()=="None" && rooms[i].get_note()=="None")
                 res[index++]=i+1;
         }
     return res;
 }
-*/
+
 void Hotel::FreeRoom(const unsigned short _number)
 {
    rooms[_number-1].free_room();
@@ -124,11 +126,32 @@ const bool Hotel::isAvailable(const unsigned short _number) const
     return false;
 }
 */
- int Hotel::SuitableRoom(const unsigned short _beds)
+void bubbleSort(Room* _rooms, int n)
+{
+
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (_rooms[j] >_rooms[j + 1])
+                std::swap(_rooms[j], _rooms[j + 1]);
+}
+
+ int Hotel::SuitableRoom(const unsigned short _beds, Date& _start, Date& _finish)
  {
-  //sort rooms by operator<
-  //for if(room i.get beds()==_beds && funk dali e svobodna v reriod)
-  //  return room.get num();
+        Room* temp=new Room[capacity];
+        for(int i=0;i<capacity;++i)
+        {
+            temp[i]=rooms[i];
+        }
+        bubbleSort(temp,capacity);
+
+
+        for(int i=0;i<capacity;++i)
+        {
+          // if(temp[i].get_beds()>=_beds && temp[i].NotOccupied( _start, _finish) )
+             return temp[i].get_number();
+        }
+
+      return -1;
 
  }
 Hotel::~Hotel()
@@ -136,3 +159,4 @@ Hotel::~Hotel()
     delete[] rooms;
     rooms=nullptr;
 }
+
