@@ -26,7 +26,7 @@ void Hotel::reserve(int size)
           //  buff[i]=rooms[i];
         }
     delete[] rooms;
-    //rooms=buff;
+    rooms=buff;
    // buff=nullptr;
     capacity=size;
     }
