@@ -80,7 +80,7 @@ std::ostream& operator<<(std::ostream& os, const Hotel& other)
 
 Room& Hotel::operator[](int i)
 {
-    if(i<capacity)
+    if(i<capacity )
        return rooms[i];
     else
        std::cerr<<"Room does not exist!";
@@ -115,17 +115,7 @@ void Hotel::CloseRoom(const unsigned short _number, Date& start, Date& finish)
 {
     rooms[_number-1].close(start,finish);
 }
-/*
-const bool Hotel::isAvailable(const unsigned short _number) const
-{
-    for(int i=0;i<capacity;++i)
-    {
-        if(rooms[i].get_number()==_number && rooms[i].get_name()=="None.")
-                 return true;
-    }
-    return false;
-}
-*/
+
 void bubbleSort(Room* _rooms, int n)
 {
 
@@ -135,7 +125,7 @@ void bubbleSort(Room* _rooms, int n)
                 std::swap(_rooms[j], _rooms[j + 1]);
 }
 
- int Hotel::SuitableRoom(const unsigned short _beds, Date& _start, Date& _finish)
+ int Hotel::SuitableRoom(const unsigned short _beds,const Date& _start,const Date& _finish)
  {
         Room* temp=new Room[capacity];
         for(int i=0;i<capacity;++i)
@@ -147,7 +137,7 @@ void bubbleSort(Room* _rooms, int n)
 
         for(int i=0;i<capacity;++i)
         {
-          // if(temp[i].get_beds()>=_beds && temp[i].NotOccupied( _start, _finish) )
+           if(temp[i].get_beds()>=_beds && temp[i].NotOccupied( _start, _finish) )
              return temp[i].get_number();
         }
 
