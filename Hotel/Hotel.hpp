@@ -1,7 +1,8 @@
+#ifndef HOTEL_HPP_INCLUDED
 #define HOTEL_HPP_INCLUDED
 
 #include "Room.hpp"
-#include "String.hpp"
+
 
 
 class Hotel
@@ -16,7 +17,6 @@ class Hotel
     Hotel();
     Hotel(Room*,int);
     Hotel(const Hotel&);
-    //Hotel(int);
     Room& operator[](int);
     Hotel& operator=(const Hotel&);
 
@@ -26,9 +26,8 @@ class Hotel
     int* AvailableRooms(int&);
     void FreeRoom(const unsigned short);
     void CloseRoom(const unsigned short, Date&, Date&);
-    const bool isAvailable(const unsigned short) const;
-    int SuitableRoom(const unsigned short, Date& , Date& );
-
+     bool isAvailable(const unsigned short) const;
+    int SuitableRoom(const unsigned short,const Date& ,const Date& );
 
     ~Hotel();
 };
