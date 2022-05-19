@@ -1,31 +1,37 @@
 #include "Date.hpp"
+void Date::clearDate()
+{
+    year=0;
+    month=0;
+   day=0;
+}
 
-    // void set_year(const int _year){year=_year;}
-    //  void set_month(const int _month){month=_month;}
-    //   void set_day(const int _day){day=_day;}
-
-
-    bool Date::operator<( const Date& other)const
-    {
-        if(year<other.year)
-            return true;
-        else if(month<other.month)
-            return true;
-        else if(day<other.day)
-            return true;
-      return false;
-    }
+bool Date::operator<(const Date& other) const
+{
+   if (year < other.year)
+      return true;
+   if (year == other.year && month < other.month)
+      return true;
+   if (year == other.year && month == other.month && day < other.day)
+      return true;
+   return false;
+}
 
     bool Date::operator>( const Date& other )const
     {
 
-        if(year>other.year)
-            return true;
-        else if(month>other.month)
-            return true;
-        else if(day>other.day)
-            return true;
-      return false;
+        if (year >other.year)
+      return true;
+   if (year == other.year && month > other.month)
+      return true;
+   if (year == other.year && month == other.month && day > other.day)
+      return true;
+   return false;
+    }
+
+    bool Date::operator>=( const Date& other )const
+    {
+       return !(*this<other);
     }
      bool Date::operator==( const Date& other)const
      {
@@ -33,7 +39,9 @@
      }
 
 
-     int Date::get_day()const {return day;}
+   //  int Date::get_day()const {return day;}
+    // int Date::get_month()const{return month;}
+    // int Date::get_year()const{return year;}
 
 
     bool Date::isValidDate()const
