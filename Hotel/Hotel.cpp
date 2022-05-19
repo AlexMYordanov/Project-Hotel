@@ -1,8 +1,6 @@
 #include "Hotel.hpp"
 #include <cstring>
 
-
-
 Hotel::Hotel()
 {
     rooms=nullptr;
@@ -14,6 +12,7 @@ Hotel::Hotel(Room* _rooms, int _cap )
     capacity=_cap;
     rooms=_rooms;
 }
+
 void Hotel::reserve(int size)
 {
     if(size<capacity)
@@ -105,10 +104,29 @@ int* Hotel::AvailableRooms(int& cnt)
         }
     return res;
 }
+int* Hotel::AvailableRoomsByDate(int& cnt, const Date& date)
+{
 
+    for(int i=0; i<capacity; ++i)
+        {
+            if(rooms[i].get_start()>date || rooms[i].get_finish()<date)
+
+                    cnt++;
+        }
+
+    int* valid= new int[cnt];
+    int index=0;
+    for(int i=0; i<capacity; ++i)
+        {
+            if(rooms[i].get_start()>date || rooms[i].get_finish()<date)
+                valid[index++]=i+1;
+        }
+    return valid;
+}
 void Hotel::FreeRoom(const unsigned short _number)
 {
    rooms[_number-1].free_room();
+   std::cout<<"Room successfully freed!\n";
 }
 
 void Hotel::CloseRoom(const unsigned short _number, Date& start, Date& finish)
