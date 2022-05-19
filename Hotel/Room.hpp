@@ -17,7 +17,8 @@ class Room
 
     public:
         Room();
-        Room(unsigned short _number, unsigned short _beds,String _name,String _note, Date _start, Date _finish): number(_number), beds(_beds), name(_name),note(_note),start(_start),finish(_finish){}
+        Room(unsigned short _number, unsigned short _beds,String _name,String _note, Date _start, Date _finish)
+        : number(_number), beds(_beds), name(_name),note(_note),start(_start),finish(_finish){}
 
         void set_number(unsigned short _number)
         {
@@ -48,5 +49,5 @@ class Room
         int Difference(const Date& ,const Date&)const;
 
 };
- 
+
 #endif // ROOM_HPP_INCLUDED
