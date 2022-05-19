@@ -5,10 +5,7 @@ Room::Room()
     beds=-1;
     name="None";
     note="None";
-    start={0,0,0};
-    finish={0,0,0};
 }
-
 
 std::ostream& operator<<(std::ostream& os, const Room& other)
 {
@@ -54,8 +51,8 @@ void Room::free_room()
 {
     name="None";
     note="None";
-    start={0,0,0};
-    finish={0,0,0};
+    start.clearDate();
+    finish.clearDate();
 }
 void Room::close(Date& _start,Date& _finish)
 {
@@ -98,7 +95,6 @@ int Room::Used(unsigned short _number,const Date& _start,const Date& _finish )co
             }
         }
 
-
 }
 int Room::Difference(const Date& _start,const Date& _finish) const
 {
@@ -125,4 +121,5 @@ int Room::Difference(const Date& _start,const Date& _finish) const
    int days=days_finish -days_start;
 
    return  (_finish.year==2024 && _finish.month>=2) ? days + 1 : days ;
+
 }
