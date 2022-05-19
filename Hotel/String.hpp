@@ -30,8 +30,6 @@ public:
     void Erase();
     void PushBack(char );
     void get_line();
-
-
 };
 
 #endif // STRING_HPP_INCLUDED
