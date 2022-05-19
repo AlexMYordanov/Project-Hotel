@@ -3,8 +3,6 @@
 
 #include "Room.hpp"
 
-
-
 class Hotel
 {
     private:
@@ -24,9 +22,9 @@ class Hotel
     friend std::ostream& operator<<(std::ostream&, const Hotel&);
     void reserve(const int);
     int* AvailableRooms(int&);
+    int* AvailableRoomsByDate(int& , const Date&);
     void FreeRoom(const unsigned short);
     void CloseRoom(const unsigned short, Date&, Date&);
-     bool isAvailable(const unsigned short) const;
     int SuitableRoom(const unsigned short,const Date& ,const Date& );
 
     ~Hotel();
